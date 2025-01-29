@@ -1,18 +1,18 @@
 [
-    {
-        "arguments": [
-            "/usr/bin/gcc",
-            "-c",
-            "-Wall",
-            "-Werror",
-            "-Wextra",
-            "-Iinc",
-            "-o",
-            "test",
-            "main.c"
-        ],
-        "directory": "/home/dsanchez/42/libasm",
-        "file": "/home/dsanchez/42/libasm/main.c",
-        "output": "/home/dsanchez/42/libasm/test"
-    }
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-Iinc",
+      "-o",
+      "test",
+      "main.c"
+    ],
+    "directory": "/home/diego/42/libasm",
+    "file": "/home/diego/42/libasm/main.c",
+    "output": "/home/diego/42/libasm/test"
+  }
 ]

@@ -8,7 +8,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 ASMFLAGS = -f elf64
 
-SRCS = ft_strlen.s #ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
+SRCS = ft_strlen.s ft_strcpy.s #ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 
 OBJS = $(SRCS:.s=.o)
 
@@ -23,7 +23,7 @@ $(NAME): $(OBJS)
 test: $(NAME) main.c inc/libasm.h
 	$(CC) $(CFLAGS) -Iinc  main.c -o test -L. -lasm
 
-bear: test
+bear:
 	bear -- make test
 
 clean:
