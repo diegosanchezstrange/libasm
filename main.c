@@ -94,6 +94,29 @@ int main(void) {
   free(copy);
 
   // ft_strdup test
+  printf("************************************\n");
+  printf("* Testing ft_strdup                *\n");
+  printf("************************************\n");
+
+  char *dup = ft_strdup(str);
+  char *dup2 = strdup(str);
+  printf("ft_strdup: %s, len: %zu\n", dup, ft_strlen(dup));
+  printf("strdup: %s, len: %zu\n", dup2, ft_strlen(dup2));
+  free(dup);
+  free(dup2);
+
+  char *empty = ft_strdup("");
+  char *empty2 = strdup("");
+  printf("ft_strdup empty: %s, len: %zu\n", empty, ft_strlen(empty));
+  printf("strdup empty: %s, len: %zu\n", empty2, ft_strlen(empty2));
+  free(empty);
+
+  char *null = ft_strdup(NULL);
+  char *null2 = strdup(NULL);
+  printf("ft_strdup NULL: %s, len: %zu\n", null, ft_strlen(null));
+  printf("strdup NULL: %s, len: %zu\n", null2, ft_strlen(null2));
+  free(null);
+  free(null2);
 
   return (0);
 }
