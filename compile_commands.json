@@ -6,13 +6,15 @@
       "-Wall",
       "-Werror",
       "-Wextra",
+      "-g3",
+      "-fsanitize=address",
       "-Iinc",
       "-o",
       "test",
       "main.c"
     ],
-    "directory": "/home/diego/42/libasm",
-    "file": "/home/diego/42/libasm/main.c",
-    "output": "/home/diego/42/libasm/test"
+    "directory": "/home/dsanchez/42/libasm",
+    "file": "/home/dsanchez/42/libasm/main.c",
+    "output": "/home/dsanchez/42/libasm/test"
   }
 ]
