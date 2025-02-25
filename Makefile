@@ -10,7 +10,7 @@ ASMFLAGS = -f elf64
 
 SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 
-SRCS += ft_atoi_base.s #ft_list_push_front.s ft_list_size.s ft_list_sort.s ft_list_remove_if.s
+SRCS += ft_atoi_base.s ft_list_push_front.s ft_list_size.s #ft_list_sort.s ft_list_remove_if.s
 
 OBJS = $(SRCS:.s=.o)
 

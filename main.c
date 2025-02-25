@@ -14,8 +14,6 @@ int main(void)
     if (copy == NULL)
         return (1);
 
-    printf("str: %s\n", str);
-
     // // ft_strlen test
     // printf("************************************\n");
     // printf("* Testing ft_strlen                *\n");
@@ -135,12 +133,57 @@ int main(void)
     // char *base2 = "0123456789ABCDEF";
     // char *base3 = "01";
     // char *base4 = "poney";
-    char *invalidBase = "0123456789";
+    // char *base10 = "0123456789";
+    // char *base16 = "0123456789ABCDEF";
+    // char *base2  = "01";
+    // char *base4  = "poney";
+    //
+    // char *num  = "123";
+    // char *num2 = "7B";
+    // char *num3 = "1111011";
+    // char *num4 = "yye";
+    //
+    // int sol = ft_atoi_base(num, base10);
+    // printf("ft_atoi_base base 10: %d\n", sol);
+    //
+    // sol = ft_atoi_base(num2, base16);
+    // printf("ft_atoi_base base 16: %d\n", sol);
+    //
+    // sol = ft_atoi_base(num3, base2);
+    // printf("ft_atoi_base base 2: %d\n", sol);
+    //
+    // sol = ft_atoi_base(num4, base4);
+    // printf("ft_atoi_base base 4: %d\n", sol);
 
-    int invalid = ft_atoi_base(str, invalidBase);
+    printf("************************************\n");
+    printf("* Testing ft_list_push_front       *\n");
+    printf("************************************\n");
 
-    printf("ft_atoi_base - str: %s, base: %s, invalid: %d\n", str, invalidBase,
-           invalid);
+    t_list *list = NULL;
+    t_list *tmp  = NULL;
+
+    ft_list_push_front(&list, strdup("Hello"));
+    ft_list_push_front(&list, "World");
+    ft_list_push_front(&list, "!");
+    tmp = list;
+    while (tmp)
+    {
+        printf("%s\n", (char *)tmp->data);
+        tmp = tmp->next;
+    }
+
+    printf("************************************\n");
+    printf("* Testing ft_list_size             *\n");
+    printf("************************************\n");
+
+    printf("List size: %d\n", ft_list_size(list));
+
+    while (list)
+    {
+        tmp  = list;
+        list = list->next;
+        free(tmp);
+    }
 
     return (0);
 }
