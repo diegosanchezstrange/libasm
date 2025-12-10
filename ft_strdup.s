@@ -1,3 +1,10 @@
+; Documentation:
+; Function: ft_strdup
+; Description: Allocates memory for a new string and duplicates the content of the input string into it.
+; Parameters:
+; - rdi: Address of the input string to be duplicated.
+; Returns: A pointer to the newly allocated string, or NULL if memory allocation fails. Sets the appropriate error number on failure.
+
 section .text
 global ft_strdup
 extern malloc

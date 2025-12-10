@@ -1,9 +1,9 @@
-#include <errno.h>
 #include <libasm.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
+
+int lower(void *d1, void *d2) { return ((long long)d1 > (long long)d2); }
 
 int main(void)
 {
@@ -162,13 +162,32 @@ int main(void)
     t_list *list = NULL;
     t_list *tmp  = NULL;
 
-    ft_list_push_front(&list, strdup("Hello"));
-    ft_list_push_front(&list, "World");
-    ft_list_push_front(&list, "!");
+    // Edge case: Test with NULL as input
+    // ft_list_push_front(NULL, (void *)42);
+
+    // Edge case: Test with empty string
+    // ft_list_push_front(&list, strdup(""));
+    // ft_list_push_front(&list, strdup("a"));
+    // ft_list_push_front(&list, strdup("c"));
+
+    ft_list_push_front(&list, (void *)-2);
+    ft_list_push_front(&list, (void *)0);
+    ft_list_push_front(&list, (void *)1);
+
+    // ft_list_push_front(&list, (void *)2);
+    // ft_list_push_front(&list, (void *)3);
+    // ft_list_push_front(&list, (void *)4);
+    // ft_list_push_front(&list, (void *)-1);
+    // ft_list_push_front(&list, (void *)5);
+    // ft_list_push_front(&list, (void *)-2);
+    // ft_list_push_front(&list, (void *)6);
+    // ft_list_push_front(&list, (void *)-3);
+    // ft_list_push_front(&list, (void *)7);
+    // ft_list_push_front(&list, (void *)0);
     tmp = list;
     while (tmp)
     {
-        printf("%s\n", (char *)tmp->data);
+        // printf("%s\n", (char *)tmp->data);
         tmp = tmp->next;
     }
 
@@ -178,12 +197,54 @@ int main(void)
 
     printf("List size: %d\n", ft_list_size(list));
 
-    while (list)
+    printf("************************************\n");
+    printf("* Testing ft_list_sort             *\n");
+    printf("************************************\n");
+
+    // Print the pointer to list and the pointer to the function ft_strcmp
+
+    tmp = list;
+
+    // printf("List: %p\n", &list);
+    // printf("Data: %p\n", list->data);
+    // printf("Next: %p\n", list->next);
+
+    ft_list_sort(&list, &lower);
+
+    // printf("List: %p\n", &list);
+    // printf("Data: %p\n", list->data);
+    // printf("Next: %p\n", list->next);
+
+    tmp = list;
+
+    while (tmp)
     {
-        tmp  = list;
-        list = list->next;
-        free(tmp);
+        // printf("%s\n", (char *)tmp->data);
+        printf("%ld\n", (long)tmp->data);
+        tmp = tmp->next;
     }
+
+    printf("************************************\n");
+    printf("* Testing ft_list_remove_if        *\n");
+    printf("************************************\n");
+
+    // ft_list_remove_if(&list, "c", &ft_strcmp, &free);
+    //
+    // tmp = list;
+    //
+    // while (tmp)
+    // {
+    //     printf("%s\n", (char *)tmp->data);
+    //     tmp = tmp->next;
+    // }
+    //
+    // while (list)
+    // {
+    //     tmp  = list;
+    //     list = list->next;
+    //     free(tmp->data);
+    //     free(tmp);
+    // }
 
     return (0);
 }
