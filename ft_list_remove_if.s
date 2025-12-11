@@ -2,8 +2,6 @@ section .text
 global ft_list_remove_if
 
 extern free
-
-
 ; struct s_list
 ; {
 ;   void *data;
@@ -36,7 +34,6 @@ ft_list_remove_if:
 .loop:
     test rcx, rcx
     jz .done
-
 
     mov rdi, [rcx + 0]
     mov rsi, r12

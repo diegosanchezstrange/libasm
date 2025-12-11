@@ -49,11 +49,14 @@ global ft_list_sort
 
 
 ft_list_sort:
-    mov r8, rsi ; Save the address of the comparison function
+    push r12
+    push r13
+    mov r13, rsi ; Save the address of the comparison function
     mov r9, rdi ; Save the address of the first element
 
 .set_vars:
-    xor r11, r11 ; Clear r11
+    xor r12, r12 ; Clear r12
+    xor r10, r10 ; Clear r10 (previous element)
     mov rcx, [r9] ; Save the address of the first element
 .sort_bubble:
     test rcx, rcx ; Check if the current element is NULL
@@ -69,11 +72,9 @@ ft_list_sort:
     push rcx
     push rdx
     push r9
-    push r11
     push r10
-    call r8 ; Call the comparison function
+    call r13 ; Call the comparison function
     pop r10
-    pop r11
     pop r9
     pop rdx
     pop rcx
@@ -82,10 +83,12 @@ ft_list_sort:
     jle .jump_next ; If it's negative or 0, the list is sorted
 
 .swap:
+    mov r12, 1 ; Set r12 to indicate that a swap was made
     mov rax, [rdx + LIST_NEXT] ; Save the next element
     mov [rdx + LIST_NEXT], rcx
     mov [rcx + LIST_NEXT], rax ; Set the next element of the current element
     mov rcx, rdx ; Move to the first element
+
 
     test r10, r10 ; Check if the address of the previous element is NULL
     jz .swap_first ; If it is, the current element is the first element
@@ -99,13 +102,14 @@ ft_list_sort:
 
 .swap_first:
     mov [r9], rcx ; Set the new first element of the list
-    mov r11, 1
-    jmp .sort_bubble
+    jmp .jump_next
 
 .check_if_sorted:
-
-    
+    test r12, r12 ; Check if any swaps were made
+    jnz .set_vars ; If swaps were made, repeat the sorting
 
 .done_sort:
+    pop r13
+    pop r12
     xor rax, rax
     ret
