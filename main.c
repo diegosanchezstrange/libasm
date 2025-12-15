@@ -169,9 +169,29 @@ int main(void) {
   // ft_list_push_front(&list, strdup("a"));
   // ft_list_push_front(&list, strdup("c"));
 
+<<<<<<< Updated upstream
   ft_list_push_front(&list, (void *)-2);
   ft_list_push_front(&list, (void *)0);
   ft_list_push_front(&list, (void *)1);
+||||||| Stash base
+    ft_list_push_front(&list, (void *)-2);
+    ft_list_push_front(&list, (void *)0);
+    ft_list_push_front(&list, (void *)1);
+=======
+    ft_list_push_front(&list, (void *)-2);
+    ft_list_push_front(&list, (void *)0);
+    ft_list_push_front(&list, (void *)1);
+    // ft_list_push_front(&list, (void *)2);
+    // ft_list_push_front(&list, (void *)3);
+    // ft_list_push_front(&list, (void *)4);
+    // ft_list_push_front(&list, (void *)-1);
+    // ft_list_push_front(&list, (void *)5);
+    // ft_list_push_front(&list, (void *)-2);
+    // ft_list_push_front(&list, (void *)6);
+    // ft_list_push_front(&list, (void *)-3);
+    // ft_list_push_front(&list, (void *)7);
+    // ft_list_push_front(&list, (void *)0);
+>>>>>>> Stashed changes
 
   // ft_list_push_front(&list, (void *)2);
   // ft_list_push_front(&list, (void *)3);
