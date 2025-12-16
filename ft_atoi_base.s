@@ -7,6 +7,8 @@ global ft_atoi_base
     ; rsi: The base to use
 
 ft_atoi_base:
+    
+    push r12
 
 .check_base:
     mov rdx, rsi ; Save the base in rdx
@@ -22,8 +24,14 @@ ft_atoi_base:
     je .base_ko 
     cmp al, 45 ; Check if the character is '-'
     je .base_ko 
-    cmp al, 32 ; Check if the character is ' '
+    cmp al, 32
     je .base_ko
+    ; Check if chars is in between 9 and 13 (tab, newline, etc.)
+    cmp al, 9
+    jl .continue_check
+    cmp al, 13
+    jle .base_ko
+.continue_check:
 
     ; Check if the character is already in the base
     mov r8, rcx ; Save the current index
@@ -44,8 +52,8 @@ ft_atoi_base:
     jmp .loop ; Repeat the loop
 
 .base_ko:
-    mov rax, -1 ; Return 0
-    ret
+    mov rax, 0 ; Return 0
+    jmp .final
 
 .base_ok:
     cmp rcx, 2 ; Check if the base is at least 2
@@ -79,17 +87,16 @@ ft_atoi_base:
     jmp .parse_number ; If it's not a sign, parse the number
 
 .positive:
-    mov rax, 1 ; Set the sign to positive
+    mov r12, 1 ; Set the sign to positive
     inc rcx ; Move to the next character
     jmp .parse_number
 
 .negative:
-    mov rax, -1 ; Set the sign to negative
+    mov r12, -1 ; Set the sign to negative
     inc rcx ; Move to the next character
     jmp .parse_number
 
 .parse_number:
-    mov r8, rax ; Save the sign in r8
     xor rax, rax ; Clear rax
     xor rbx, rbx ; Clear rbx
 
@@ -117,4 +124,10 @@ ft_atoi_base:
     jmp .parse_loop
 
 .end:
+    test r12, r12
+    jge .final ; If the sign is positive, return the result
+    neg rax ; Negate the result if the sign is negative
+.final:
+    pop r12
     ret
+    jmp .end
